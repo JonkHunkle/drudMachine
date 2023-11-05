@@ -1,31 +1,21 @@
 import PropTypes from 'prop-types';
-import { useState } from 'react';
 
-export default function DrumPad({spot, measure, setMeasure }) {
-    const [active, setActive] = useState(false)
-
-
+export default function DrumPad({beat, track, color,updateTrackSequence }) {
     const handleClick = (e)=>{
-        let measureCopy=[...measure]
-        const pad = document.getElementById(e.target.id)
-        if(active){
-            pad.style.backgroundColor='white'
-        } else{
-            pad.style.backgroundColor='aquamarine'
-        }
-        if(measureCopy[spot]===0){
-            measureCopy[spot]=1
-        }else measureCopy[spot] =0
-        setActive(!active)
-        setMeasure([...measureCopy])
-
+      updateTrackSequence(e)
     }
+
   return (
-    <div className="drum-pad" onClick={handleClick} name={spot} id ={`pad-${spot}`}/>
+    <div className={`drum-pad pad-${beat}`} style={{backgroundColor:color??null}}data-sequence={track.id} onClick={handleClick} name={beat}/>
   )
 }
 DrumPad.propTypes = {
     setMeasure: PropTypes.func, 
+    updateTrackSequence: PropTypes.func, 
+    setSoundBank: PropTypes.func, 
+    soundBank: PropTypes.array, 
     measure: PropTypes.array, 
-    spot: PropTypes.number.isRequired, 
+    track: PropTypes.object, 
+    color: PropTypes.string, 
+    beat: PropTypes.number
   };

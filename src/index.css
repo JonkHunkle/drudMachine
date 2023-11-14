@@ -15,13 +15,14 @@
 }
 
 .box{
+  padding:.25rem;
   display: grid;
-  grid-template-columns: repeat(8, minmax(100px, 10svh));
+  grid-template-columns: repeat(9, minmax(100px, 10svh));
   /* grid-template-columns: repeat(8, 1fr); */
   /* grid-template-rows: repeat(2, auto); */
   max-width: 100svw;
   border:1px solid black;
-  gap: 1rem;
+  gap: .75rem;
 }
 
 .drum-pad{
